@@ -1,0 +1,17 @@
+<h1>Welcome to MeBook!</h1>
+<h3>Welcome, <%= @user.first_name %></h3>
+
+  <%= form_for @post do |form| %>
+    <%= form.text_field :content, placeholder: "What's on your mind..." %>
+    <br>
+    <%= form.submit "Post" %>
+  <% end %>
+
+<div class="col-md-12">
+  <% @posts.reverse.each do |post| %>
+  <div class="row">
+      <h4 class="col-md-8"><%= post.content %></h4>
+      <small><%= post.created_at.strftime("%B %d, %Y") %></small>
+  </div>
+  <% end %>
+</div>
