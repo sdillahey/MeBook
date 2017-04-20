@@ -1,17 +1,26 @@
 <h1>Welcome to MeBook!</h1>
-<h3>Welcome, <%= @user.first_name %></h3>
+<br><br>
 
+  <div class="row">
   <%= form_for @post do |form| %>
-    <%= form.text_field :content, placeholder: "What's on your mind..." %>
-    <br>
+    <%= form.text_field :content, placeholder: "What's on your mind...", :style => "line-height: 40px", :size => "80px" %>
+    <br><br>
     <%= form.submit "Post" %>
   <% end %>
-
-<div class="col-md-12">
+  </div>
+  <br>
+  <hr>
+  <div class="conatiner">
+  <h2>Your Posts</h2>
+  </div>
+  <br>
+<div class="panel-group">
   <% @posts.reverse.each do |post| %>
-  <div class="row">
-      <h4 class="col-md-8"><%= post.content %></h4>
-      <small><%= post.created_at.strftime("%B %d, %Y") %></small>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <strong class="col-xs-10"><%= post.content %></strong>
+      <small class="col-xs-2"><%= post.created_at.strftime("%B %d, %Y") %></small>
+    </div>
   </div>
   <% end %>
 </div>
